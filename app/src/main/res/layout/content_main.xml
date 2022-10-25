@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.martinz.mydownloader.presentation.main_activity.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".presentation.main_activity.MainActivity"
+        tools:showIn="@layout/activity_main">
+
+
+
+        <ImageView
+            android:id="@+id/iv_Preview"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/colorPrimaryDark"
+            android:src="@drawable/download"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <RadioGroup
+            android:id="@+id/rbGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnDownload"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_Preview">
+
+            <RadioButton
+                android:id="@+id/rb_Glide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_name_glide"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rb_UdacityRepo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_name_udacity_repo"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rb_Retrofit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_name_retrofit"
+                android:textSize="20sp" />
+
+
+            <RadioButton
+                android:id="@+id/rb_Other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Other"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_Custom"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@={viewModel.customLink}"/>
+
+        </RadioGroup>
+
+        <com.martinz.mydownloader.presentation.LoadingButton
+            android:id="@+id/btnDownload"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:loadingCircleColor="@color/colorAccent"
+            app:buttonColor="@color/colorPrimary"
+            app:buttonLoadingColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
